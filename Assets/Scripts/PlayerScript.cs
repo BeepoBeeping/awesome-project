@@ -54,9 +54,7 @@ public class PlayerScript : MonoBehaviour
         //read variable from LevelManager singleton
         int health = LevelManager.instance.GetHealth();
 
-        string text = "Health: " + health;
-
-        text += "\nBingbong!";
+        string text = "Health: " + health;       
 
         // define debug text area
         GUI.contentColor = Color.white;

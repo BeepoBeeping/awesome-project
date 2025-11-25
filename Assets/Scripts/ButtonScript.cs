@@ -27,5 +27,9 @@ public class ButtonScript : MonoBehaviour
     {
         SceneManager.LoadScene("Level2");
     }
+    public void QuitMenuButton()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 
 }
