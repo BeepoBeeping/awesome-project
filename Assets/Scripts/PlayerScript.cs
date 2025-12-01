@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    AudioSource audioSource;
+    public AudioClip sfx1;  // sound effect asset from sfx folder
     public Rigidbody playerRigBod;
     public float xvel;
     public float yvel;
@@ -17,7 +19,10 @@ public class PlayerScript : MonoBehaviour
         playerRigBod.GetComponent<Rigidbody>();
         LevelManager.instance.SetHighScore(50);
         reset = gameObject.AddComponent<ButtonScript>();
+        audioSource = GetComponent<AudioSource>();
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -40,15 +45,22 @@ public class PlayerScript : MonoBehaviour
         {
             playerRigBod.linearVelocity = Vector3.right * xvel;
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             playerRigBod.linearVelocity = Vector3.up * yvel;
+            FindFirstObjectByType<AudioManager>().PlayClip("Jump");
         }
 
         LevelManager.instance.CheckHealth();
 
         transform.Rotate(0, 0.1f, 0);
     }
+
+    public void PlaySoundEffect(bool jump)
+    {
+        audioSource.PlayOneShot(sfx1, 0.7f); // play audio clip with volume 0.7
+    }
+
     private void OnGUI()
     {
         //read variable from LevelManager singleton

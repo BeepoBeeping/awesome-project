@@ -16,20 +16,24 @@ public class ButtonScript : MonoBehaviour
             LevelManager.instance.playerHealth = 3;
             print("Player Health back to " + LevelManager.instance.playerHealth);
             buttonText.text = "Success!";
-            player.transform.position = new Vector3(469f, 1f, 459f);
+            player.transform.position = new Vector3(0f, 0f, 0f);
+            FindFirstObjectByType<AudioManager>().PlayClip("ButtonClick");
     }
 
     public void L1Button()
     {
         SceneManager.LoadScene("Level1");
+        FindFirstObjectByType<AudioManager>().PlayClip("ButtonClick");
     }
     public void L2Button()
     {
         SceneManager.LoadScene("Level2");
+        FindFirstObjectByType<AudioManager>().PlayClip("ButtonClick");
     }
     public void QuitMenuButton()
     {
         SceneManager.LoadScene("Menu");
+        FindFirstObjectByType<AudioManager>().PlayClip("ButtonClick");
     }
 
 }
