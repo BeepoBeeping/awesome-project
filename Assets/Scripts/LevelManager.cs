@@ -33,7 +33,7 @@ public class LevelManager : MonoBehaviour
         if (playerHealth <= 0)
         {
             playerHealth = 3;
-            player.transform.position = new Vector3(469f, 1f, 459f);
+            player.transform.position = new Vector3(0f, 1f, 0f);
         }
     }
     public void SetHighScore(int score)
