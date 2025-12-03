@@ -113,7 +113,7 @@ public class PlayerScript : MonoBehaviour
 
         // define debug text area
         GUI.contentColor = Color.white;
-        GUILayout.BeginArea(new Rect(1450f, 10f, 1600f, 1600f));
+        GUILayout.BeginArea(new Rect(625f, 10f, 1600f, 1600f));
         GUILayout.Label($"<size=48>{highScoreAmount}</size>");
         GUILayout.EndArea();
 
