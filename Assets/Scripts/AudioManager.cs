@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public float musicVolume, sfxVolume;
     public static AudioManager instance;
 
     public Sound[] sounds;
@@ -22,6 +23,7 @@ public class AudioManager : MonoBehaviour
             // Another instance of this gameobject has been made so destroy it
             // as we already have one
             Destroy(gameObject);
+            return;
         }
 
         foreach( Sound s in sounds)
@@ -38,6 +40,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        ChangeMusicVolume(PlayerPrefs.GetFloat("musicVolume"));
         PlayClip("MainMenu");
     }
 
@@ -51,6 +54,25 @@ public class AudioManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         audioSource.Stop(); //stop currently playing clip
+    }
+
+    public void ChangeAudioSourceVolume(string name, float vol)
+    {
+        Sound s = Array.Find(sounds, AudioSystem => AudioSystem.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + "Not found!");
+            return;
+        }
+        s.source.volume = vol;
+
+
+    }
+
+
+    public void ChangeMusicVolume(float volume)
+    {
+        musicVolume = volume;
     }
 
 

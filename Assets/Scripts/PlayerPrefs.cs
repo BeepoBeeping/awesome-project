@@ -21,6 +21,16 @@ public class PlayerPreference : MonoBehaviour
             // the key musicVol is null so give it a default value of 0.5f
             PlayerPrefs.SetInt("hiScore", 1000);
         }
-    
+
+        /*
+        if (PlayerPrefs.HasKey("musicVolume") == true)
+        {
+            AudioManager.instance.musicVolume = PlayerPrefs.GetFloat("musicVolume");
+        }
+        else
+        {
+            PlayerPrefs.SetFloat("musicVolume", 0.5f);
+        }
+        */
     }
 }
